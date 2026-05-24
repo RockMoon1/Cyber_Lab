@@ -14,11 +14,25 @@ Free, legal options:
 
 ## 2. Create the VM
 
-- RAM: **4 GB** minimum (8 GB if you can spare it).
-- CPU: 2 vCPUs.
-- Disk: 60 GB dynamically allocated.
-- Enable nested VT-x/AMD-V off (not needed); enable the I/O APIC.
+Windows 11 has **hard minimums** the installer enforces — don't go below these:
+
+| Resource | Win11 hard minimum | Use this (realistic) |
+|----------|--------------------|----------------------|
+| RAM      | 4 GB               | **8 GB (8192 MB)** — 4 GB is miserable once Sysmon + the agent run |
+| CPU      | 2 cores            | **4 vCPUs** |
+| Disk     | **64 GB**          | **80 GB+** dynamically allocated |
+| Firmware | UEFI + Secure Boot | **Enable EFI** (wizard checkbox) |
+| Security | **TPM 2.0**        | Settings → System → set TPM to v2.0 |
+
+Without TPM 2.0 + Secure Boot + EFI, Win11 setup fails with "This PC can't run
+Windows 11." Other notes:
+- Graphics: **VBoxSVGA** controller, video memory **128 MB** (VBoxVGA can black-screen Win11).
+- Enable the I/O APIC; nested VT-x not needed.
 - Install VirtualBox **Guest Additions** after Windows boots (shared clipboard, better video).
+
+> Host has Docker/WSL2 (Hyper-V) running? VirtualBox and Hyper-V contend for VT-x,
+> which can cause slow or black-screen VMs. If that happens, see
+> [`00-troubleshooting.md`](00-troubleshooting.md).
 
 ## 3. Networking — keep it contained
 

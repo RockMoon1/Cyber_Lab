@@ -53,6 +53,19 @@ delete `%AppData%\Docker` and `%LocalAppData%\Docker` → `winget install Docker
 
 ---
 
+## VirtualBox VM black screen (Windows 11)
+
+Common causes, quickest first:
+- **No bootable ISO attached** → Settings → Storage → attach the Win11 `.iso` to the
+  optical drive.
+- **Graphics controller** set to VBoxVGA → switch to **VBoxSVGA**, video memory 128 MB.
+- **Hyper-V / WSL2 conflict** — Docker Desktop's WSL2 backend enables the Windows
+  Hypervisor Platform, which VirtualBox must then share. A green **turtle icon** in the
+  VM window's status bar means it's running under Hyper-V (slow, sometimes black). If a
+  VM won't behave, you can stop Docker Desktop while using VirtualBox, or run the lab's
+  victim VM under the host's other hypervisor if installed.
+- **Missing TPM 2.0 / Secure Boot** → Win11 setup may hang; add them in Settings → System.
+
 ## Wazuh indexer won't start / dashboard says "indexer not ready"
 
 - Ensure `vm.max_map_count >= 262144` in the Docker WSL VM:
