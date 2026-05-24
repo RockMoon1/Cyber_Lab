@@ -1,0 +1,62 @@
+# ==========================================================================
+#  Cyber_Lab .gitignore  —  PUBLIC REPO. Never commit secrets or bulk vendor.
+# ==========================================================================
+
+# --- Secrets / credentials (NEVER COMMIT) ---------------------------------
+config.toml
+*.env
+.env
+.env.*
+!.env.example
+credentials/
+secrets/
+*.key
+*.pem
+*.pfx
+*.p12
+*_token*
+.token_seed
+.token_seed.lock
+
+# --- Local Docker CLI config (contains token seed) ------------------------
+.docker/
+
+# --- Shannon (pentesting AI) — third-party tool, kept on disk not in repo --
+# Pulled via setup script; has its own .git, node_modules, and .env.
+shannon/
+.shannon/
+
+# --- Juice Shop (vulnerable target app) — third-party --------------------
+juice-shop/
+
+# --- Shannon / agent runtime scratch --------------------------------------
+workspaces/
+
+# --- Node ------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+.pnpm-store/
+.turbo/
+
+# --- Wazuh / SIEM runtime data & generated certs --------------------------
+siem/data/
+siem/config/wazuh_indexer_ssl_certs/*.pem
+siem/config/wazuh_indexer_ssl_certs/*.key
+
+# --- VM images / large binaries -------------------------------------------
+*.vdi
+*.vmdk
+*.ova
+*.iso
+
+# --- Local Claude Code settings -------------------------------------------
+.claude/
+
+# --- OS / editor cruft -----------------------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.idea/
+.vscode/
