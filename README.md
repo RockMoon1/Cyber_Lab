@@ -59,6 +59,9 @@ A_LAB/
 4. **Attack** — run Atomic tests / Shannon per [`docs/03-attack-detect-workflow.md`](docs/03-attack-detect-workflow.md).
 5. **Analyze** — hunt the resulting alerts in the Wazuh dashboard.
 
+Hit a problem? See [`docs/00-troubleshooting.md`](docs/00-troubleshooting.md)
+(includes the Docker Desktop "Inference manager" crash fix).
+
 ## Security note
 
 This lab intentionally runs **vulnerable software and attack tooling**. Keep the
